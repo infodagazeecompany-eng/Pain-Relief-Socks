@@ -164,7 +164,8 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 <label>Full Name<input name="name" type="text" placeholder="Your name" required></label>
 <label>Phone Number<input name="phone" type="tel" inputmode="tel" placeholder="03XX XXXXXXX" required></label>
 <label>Address<textarea name="address" rows="3" placeholder="House no, street, area..." required></textarea></label>
-<div class="two"><label>Landmark<input name="landmark" type="text" placeholder="Near..."></label><label>City<input name="city" type="text" placeholder="City" required></label></div>
+<label>Landmark<input name="landmark" type="text" placeholder="Near..."></label>
+<label>City<input name="city" type="text" placeholder="City" required></label>
 <div class="price-summary" id="priceSummary"><div><span>Product</span><b id="subtotalText">Rs. 1,100</b></div><div class="shipping"><span>Shipping</span><b>Rs. 200</b></div><div class="total"><span>Total</span><b id="totalText">Rs. 1,300</b></div></div>
 <button type="submit" id="orderButton">PLACE ORDER — RS. 1,300</button>
 <div class="secure-note">🔐 Your details are used only to process your order.</div>
@@ -282,7 +283,7 @@ function updateDealTotal(){
 form.querySelectorAll('input[name="quantity"]').forEach(el => el.addEventListener("change", updateDealTotal));
 updateDealTotal();
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const button = form.querySelector("button");
@@ -292,8 +293,6 @@ form.addEventListener("submit", async (e) => {
 
   button.disabled = true;
   button.textContent = "PROCESSING...";
-  processing.classList.add("show");
-  processing.setAttribute("aria-hidden", "false");
 
   data.product = "Pain Relief Socks Insoles";
   const selectedDeal = form.querySelector('input[name="quantity"]:checked');
@@ -305,19 +304,24 @@ form.addEventListener("submit", async (e) => {
   data.total = String(total);
   data.order_time = new Date().toISOString();
 
-  try {
-    if (GOOGLE_SHEET_URL) {
+  // Show processing immediately. The sheet request runs in the background and never delays the 2-second screen.
+  processing.classList.add("show");
+  processing.setAttribute("aria-hidden", "false");
+
+  if (GOOGLE_SHEET_URL) {
+    try {
       fetch(GOOGLE_SHEET_URL, {
         method: "POST",
         mode: "no-cors",
         headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
-        body: new URLSearchParams(data).toString()
-      });
-    }
+        body: new URLSearchParams(data).toString(),
+        keepalive: true
+      }).catch(() => {});
+    } catch (_) {}
+  }
 
-    // Keep the processing screen visible for about 2 seconds.
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
+  // Exactly 2 seconds after processing is shown, move to Thank You.
+  setTimeout(() => {
     processing.classList.remove("show");
     processing.setAttribute("aria-hidden", "true");
 
@@ -325,7 +329,6 @@ form.addEventListener("submit", async (e) => {
     document.getElementById("thankQty").textContent = data.quantity || "1";
     document.getElementById("thankTotal").textContent = `Rs. ${Number(data.total || 1300).toLocaleString()}`;
 
-    // Hide the normal site and show the thank-you page.
     document.querySelector("main").style.display = "none";
     document.querySelector("footer").style.display = "none";
     document.querySelector(".header").style.display = "none";
@@ -334,14 +337,7 @@ form.addEventListener("submit", async (e) => {
     thankyou.classList.add("show");
     thankyou.setAttribute("aria-hidden", "false");
     window.scrollTo({top: 0, behavior: "instant"});
-  } catch (err) {
-    processing.classList.remove("show");
-    processing.setAttribute("aria-hidden", "true");
-    alert("Order submit nahi ho saka. Please dobara try karein.");
-  } finally {
-    button.disabled = false;
-    button.textContent = `PLACE ORDER — RS. ${Number((form.querySelector('input[name="quantity"]:checked')?.dataset.price || 1100)) + 200}`;
-  }
+  }, 2000);
 });
 
 document.getElementById("backHome").addEventListener("click", () => {
