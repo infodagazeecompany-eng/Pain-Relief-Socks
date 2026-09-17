@@ -49,28 +49,6 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 .footer-links{gap:12px}
 }
 
-/* Animated review strip — placed directly below the order form */
-.review-slider-section{max-width:none;background:#fff;padding:58px 0 70px;border-top:1px solid #edf2f8;overflow:hidden}
-.review-slider-heading{text-align:center;margin-bottom:27px;padding:0 20px}
-.review-slider-heading h2{font-size:30px;letter-spacing:-1.4px;margin:10px 0 0;color:#0b1f3a}
-.review-slider-heading h2 span{color:#1268d8}
-.review-window{width:100%;overflow:hidden}
-.review-track{display:flex;width:max-content;gap:16px;animation:reviewSlide 24s linear infinite}
-.slide-review{width:330px;min-height:145px;background:#f8fbff;border:1px solid #e1eaf5;border-radius:17px;padding:21px;box-shadow:0 10px 28px #071d3b0b}
-.slide-stars{color:#1268d8;letter-spacing:2px;font-size:13px;margin-bottom:9px}
-.slide-review p{margin:0;color:#596a80;font-size:12px;line-height:1.65}
-.slide-name{margin-top:13px;color:#0b1f3a;font-size:10px;font-weight:800}
-.review-dots{display:flex;justify-content:center;gap:6px;margin-top:18px}
-.review-dots i{width:6px;height:6px;background:#b9cce5;border-radius:50%}
-.review-dots i:first-child{background:#1268d8;width:18px;border-radius:10px}
-@keyframes reviewSlide{
-  0%,18%{transform:translateX(0)}
-  25%,43%{transform:translateX(-346px)}
-  50%,68%{transform:translateX(-692px)}
-  75%,93%{transform:translateX(-1038px)}
-  100%{transform:translateX(0)}
-}
-.review-track:hover{animation-play-state:paused}
 @media(max-width:800px){
   .review-slider-section{padding:48px 0 62px}
   .review-slider-heading h2{font-size:27px}
@@ -85,6 +63,16 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
   }
 }
 
+
+.review-slider-section{max-width:none;background:#f6faff;padding:58px 5vw 65px;border-top:1px solid #e7eef7;border-bottom:1px solid #e7eef7;overflow:hidden}
+.review-slider-heading{text-align:center;margin-bottom:25px}.review-slider-heading h2{font-size:31px;letter-spacing:-1.5px;margin:9px 0 5px;color:#0b1f3a}.review-slider-heading h2 span{color:#1268d8}.review-slider-heading p{margin:0;color:#7a8798;font-size:11px}
+.review-carousel{max-width:850px;margin:auto;display:flex;align-items:center;gap:10px}.review-viewport{overflow:hidden;width:100%}.review-track{display:flex;transition:transform .55s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.slide-review{flex:0 0 100%;background:#fff;border:1px solid #dfe8f3;border-radius:19px;padding:23px 28px;box-shadow:0 12px 35px #071d3b0c;min-height:155px}
+.review-top{display:flex;align-items:center;gap:10px}.avatar{width:39px;height:39px;border-radius:50%;background:#eaf3ff;color:#1268d8;display:flex;align-items:center;justify-content:center;font-weight:900}.review-top b{display:block;font-size:12px;color:#0b1f3a}.review-top small{display:block;font-size:9px;color:#8290a1;margin-top:3px}
+.slide-stars{color:#f5b400;letter-spacing:3px;font-size:17px;margin:13px 0 8px;text-shadow:0 1px 0 #e4a900}.slide-review p{margin:0;color:#596a80;font-size:13px;line-height:1.65}
+.review-arrow{width:42px;height:42px;flex:0 0 42px;border:1px solid #dce6f1;background:#fff;color:#1268d8;border-radius:50%;font-size:29px;line-height:35px;cursor:pointer;box-shadow:0 6px 18px #071d3b0d}.review-arrow:hover{background:#eaf3ff}
+.review-dots{display:flex;justify-content:center;gap:7px;margin-top:18px}.review-dots button{width:7px;height:7px;border:0;padding:0;background:#c5d3e4;border-radius:50%;cursor:pointer}.review-dots button.active{width:22px;border-radius:10px;background:#1268d8}
+@media(max-width:800px){.review-slider-section{padding:48px 15px 58px}.review-slider-heading h2{font-size:27px}.review-carousel{gap:6px}.review-arrow{width:34px;height:34px;flex-basis:34px;font-size:24px;line-height:28px}.slide-review{padding:20px;min-height:155px}.slide-stars{font-size:16px}.slide-review p{font-size:12px}}
 </style>
 </head>
 <body>
@@ -121,6 +109,28 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 <div class="secure-note">🔐 Your details are used only to process your order.</div>
 </form>
 </section>
+
+<section class="review-slider-section" id="reviews">
+  <div class="review-slider-heading">
+    <div class="section-tag">CUSTOMER REVIEWS</div>
+    <h2>Customers love the <span>comfort.</span></h2>
+    <p>Customer feedback</p>
+  </div>
+  <div class="review-carousel">
+    <button class="review-arrow prev" type="button" aria-label="Previous review">‹</button>
+    <div class="review-viewport">
+      <div class="review-track" id="reviewTrack">
+        <article class="slide-review"><div class="review-top"><div class="avatar">A</div><div><b>Customer</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Bohat comfortable feel hai. Daily walking mein acha laga.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">S</div><div><b>Customer</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Size theek aya aur shoes mein easily adjust ho gaya.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">N</div><div><b>Customer</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Long time kharay rehne mein feet comfortable feel hue.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">H</div><div><b>Customer</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Soft cushioning achi hai, daily use ke liye convenient hai.”</p></article>
+      </div>
+    </div>
+    <button class="review-arrow next" type="button" aria-label="Next review">›</button>
+  </div>
+  <div class="review-dots" id="reviewDots"><button class="active" type="button"></button><button type="button"></button><button type="button"></button><button type="button"></button></div>
+</section>
+
 <section class="section intro">
 <div><div class="section-tag">PRODUCT DESCRIPTION & BENEFITS</div><h2>Har step mein<br><span>better comfort.</span></h2>
 <p>Long standing, walking ya daily routine mein feet ko extra cushioning aur comfortable support ka feel dein.</p>
@@ -137,25 +147,6 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 <div class="center-heading"><div class="section-tag">MADE FOR DAILY LIFE</div><h2>Work se walking tak,<br><span>comfort saath rahe.</span></h2></div>
 <div class="use-grid"><div><div class="use-icon">🚶</div><h3>Walking</h3><p>Daily walks ke liye soft feel.</p></div><div><div class="use-icon">🏃</div><h3>Active Days</h3><p>Movement ke sath comfortable support.</p></div><div><div class="use-icon">💼</div><h3>Working</h3><p>Long hours mein extra cushioning.</p></div><div><div class="use-icon">👟</div><h3>Daily Use</h3><p>Most everyday shoes ke andar fit.</p></div></div>
 </section>
-
-
-<section class="review-slider-section" id="reviews">
-  <div class="review-slider-heading">
-    <div class="section-tag">CUSTOMER REVIEWS</div>
-    <h2>Customers love the <span>comfort.</span></h2>
-  </div>
-  <div class="review-window">
-    <div class="review-track">
-      <article class="slide-review"><div class="slide-stars">★★★★★</div><p>“Bohat comfortable feel hai. Daily walking mein kaafi acha laga.”</p><div class="slide-name">— Verified Customer</div></article>
-      <article class="slide-review"><div class="slide-stars">★★★★★</div><p>“Size bilkul theek aya aur shoes mein easily adjust ho gaya.”</p><div class="slide-name">— Verified Customer</div></article>
-      <article class="slide-review"><div class="slide-stars">★★★★★</div><p>“Long time kharay rehne mein feet zyada comfortable feel hue.”</p><div class="slide-name">— Verified Customer</div></article>
-      <article class="slide-review"><div class="slide-stars">★★★★★</div><p>“Soft cushioning achi hai, daily use ke liye convenient hai.”</p><div class="slide-name">— Verified Customer</div></article>
-    </div>
-  </div>
-  <div class="review-dots"><i></i><i></i><i></i></div>
-</section>
-
-
 </main>
 
 
@@ -200,6 +191,20 @@ form.addEventListener("submit", async (e) => {
 });
 closeModal.addEventListener("click",()=>modal.classList.remove("show"));
 modal.addEventListener("click",(e)=>{if(e.target===modal)modal.classList.remove("show")});
+
+(function(){
+ const track=document.getElementById('reviewTrack');
+ if(!track)return;
+ const slides=[...track.children], dots=[...document.querySelectorAll('#reviewDots button')];
+ const prev=document.querySelector('.review-arrow.prev'), next=document.querySelector('.review-arrow.next');
+ let i=0,timer;
+ function show(n){i=(n+slides.length)%slides.length;track.style.transform='translateX(-'+(i*100)+'%)';dots.forEach((d,k)=>d.classList.toggle('active',k===i));}
+ function start(){clearInterval(timer);timer=setInterval(()=>show(i+1),3200)}
+ prev.onclick=()=>{show(i-1);start()}; next.onclick=()=>{show(i+1);start()};
+ dots.forEach((d,k)=>d.onclick=()=>{show(k);start()});
+ start();
+})();
+
 </script>
 </body>
 </html>
