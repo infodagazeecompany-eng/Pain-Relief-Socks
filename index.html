@@ -130,6 +130,25 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 @media(max-width:600px){.deal-grid{gap:8px!important}.deal-card{min-height:90px;padding-left:4px!important;padding-right:4px!important}.deal-card b{font-size:12px!important}.deal-card small{font-size:12px!important}.deal-label{font-size:7px!important;padding:3px 5px!important}}
 </style>
 
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2529174307495071');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2529174307495071&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 </head>
 <body>
 <div class="topbar">🚚 Cash on Delivery Available Across Pakistan</div>
@@ -336,6 +355,16 @@ form.addEventListener("submit", (e) => {
     document.querySelector(".sticky-buy")?.style.setProperty("display", "none");
     thankyou.classList.add("show");
     thankyou.setAttribute("aria-hidden", "false");
+
+    // Meta Purchase fires only when the Thank You page is actually shown.
+    // It is fired once per submitted order; refreshing the Thank You page does not run this handler again.
+    if (typeof fbq === "function") {
+      fbq('track', 'Purchase', {
+        value: total,
+        currency: 'PKR'
+      });
+    }
+
     window.scrollTo({top: 0, behavior: "instant"});
   }, 2000);
 });
