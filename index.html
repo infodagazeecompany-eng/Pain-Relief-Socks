@@ -164,8 +164,7 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 <label>Full Name<input name="name" type="text" placeholder="Your name" required></label>
 <label>Phone Number<input name="phone" type="tel" inputmode="tel" placeholder="03XX XXXXXXX" required></label>
 <label>Address<textarea name="address" rows="3" placeholder="House no, street, area..." required></textarea></label>
-<label>Landmark<input name="landmark" type="text" placeholder="Near..."></label>
-<label>City<input name="city" type="text" placeholder="City" required></label>
+<div class="two"><label>Landmark<input name="landmark" type="text" placeholder="Near..."></label><label>City<input name="city" type="text" placeholder="City" required></label></div>
 <div class="price-summary" id="priceSummary"><div><span>Product</span><b id="subtotalText">Rs. 1,100</b></div><div class="shipping"><span>Shipping</span><b>Rs. 200</b></div><div class="total"><span>Total</span><b id="totalText">Rs. 1,300</b></div></div>
 <button type="submit" id="orderButton">PLACE ORDER — RS. 1,300</button>
 <div class="secure-note">🔐 Your details are used only to process your order.</div>
@@ -301,7 +300,6 @@ form.addEventListener("submit", async (e) => {
   const subtotal = Number(selectedDeal?.dataset.price || 1100);
   const shipping = 200;
   const total = subtotal + shipping;
-  data.deal = `${data.quantity} ${Number(data.quantity) === 1 ? "Pair" : "Pairs"}`;
   data.price = String(subtotal);
   data.shipping = String(shipping);
   data.total = String(total);
@@ -309,7 +307,7 @@ form.addEventListener("submit", async (e) => {
 
   try {
     if (GOOGLE_SHEET_URL) {
-      await fetch(GOOGLE_SHEET_URL, {
+      fetch(GOOGLE_SHEET_URL, {
         method: "POST",
         mode: "no-cors",
         headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
