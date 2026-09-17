@@ -48,6 +48,43 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 .sticky-buy{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #dfe6ef;padding:9px 12px;z-index:60;align-items:center;justify-content:space-between;box-shadow:0 -7px 25px #071d3b12}.sticky-buy div{display:flex;flex-direction:column}.sticky-buy small{font-size:8px;color:#738096}.sticky-buy b{font-size:14px}.sticky-buy a{background:var(--blue);color:#fff;text-decoration:none;border-radius:9px;padding:12px 15px;font-size:10px;font-weight:900}
 .footer-links{gap:12px}
 }
+
+/* Animated review strip — placed directly below the order form */
+.review-slider-section{max-width:none;background:#fff;padding:58px 0 70px;border-top:1px solid #edf2f8;overflow:hidden}
+.review-slider-heading{text-align:center;margin-bottom:27px;padding:0 20px}
+.review-slider-heading h2{font-size:30px;letter-spacing:-1.4px;margin:10px 0 0;color:#0b1f3a}
+.review-slider-heading h2 span{color:#1268d8}
+.review-window{width:100%;overflow:hidden}
+.review-track{display:flex;width:max-content;gap:16px;animation:reviewSlide 24s linear infinite}
+.slide-review{width:330px;min-height:145px;background:#f8fbff;border:1px solid #e1eaf5;border-radius:17px;padding:21px;box-shadow:0 10px 28px #071d3b0b}
+.slide-stars{color:#1268d8;letter-spacing:2px;font-size:13px;margin-bottom:9px}
+.slide-review p{margin:0;color:#596a80;font-size:12px;line-height:1.65}
+.slide-name{margin-top:13px;color:#0b1f3a;font-size:10px;font-weight:800}
+.review-dots{display:flex;justify-content:center;gap:6px;margin-top:18px}
+.review-dots i{width:6px;height:6px;background:#b9cce5;border-radius:50%}
+.review-dots i:first-child{background:#1268d8;width:18px;border-radius:10px}
+@keyframes reviewSlide{
+  0%,18%{transform:translateX(0)}
+  25%,43%{transform:translateX(-346px)}
+  50%,68%{transform:translateX(-692px)}
+  75%,93%{transform:translateX(-1038px)}
+  100%{transform:translateX(0)}
+}
+.review-track:hover{animation-play-state:paused}
+@media(max-width:800px){
+  .review-slider-section{padding:48px 0 62px}
+  .review-slider-heading h2{font-size:27px}
+  .slide-review{width:285px;min-height:140px}
+  .review-track{gap:12px;animation-name:reviewSlideMobile}
+  @keyframes reviewSlideMobile{
+    0%,18%{transform:translateX(0)}
+    25%,43%{transform:translateX(-297px)}
+    50%,68%{transform:translateX(-594px)}
+    75%,93%{transform:translateX(-891px)}
+    100%{transform:translateX(0)}
+  }
+}
+
 </style>
 </head>
 <body>
@@ -101,33 +138,23 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 <div class="use-grid"><div><div class="use-icon">🚶</div><h3>Walking</h3><p>Daily walks ke liye soft feel.</p></div><div><div class="use-icon">🏃</div><h3>Active Days</h3><p>Movement ke sath comfortable support.</p></div><div><div class="use-icon">💼</div><h3>Working</h3><p>Long hours mein extra cushioning.</p></div><div><div class="use-icon">👟</div><h3>Daily Use</h3><p>Most everyday shoes ke andar fit.</p></div></div>
 </section>
 
-<section class="section reviews-section" id="reviews">
-  <div class="center-heading">
+
+<section class="review-slider-section" id="reviews">
+  <div class="review-slider-heading">
     <div class="section-tag">CUSTOMER REVIEWS</div>
-    <h2>Real feedback,<br><span>real comfort.</span></h2>
-    <p class="review-note">Customer feedback section</p>
+    <h2>Customers love the <span>comfort.</span></h2>
   </div>
-  <div class="review-grid">
-    <article class="review-card">
-      <div class="stars">★★★★★</div>
-      <h3>Verified Customer</h3>
-      <p>“Apne genuine customer feedback ko yahan showcase karein.”</p>
-      <small>Verified Customer</small>
-    </article>
-    <article class="review-card">
-      <div class="stars">★★★★★</div>
-      <h3>Verified Customer</h3>
-      <p>“Apne genuine customer feedback ko yahan showcase karein.”</p>
-      <small>Verified Customer</small>
-    </article>
-    <article class="review-card">
-      <div class="stars">★★★★★</div>
-      <h3>Verified Customer</h3>
-      <p>“Apne genuine customer feedback ko yahan showcase karein.”</p>
-      <small>Verified Customer</small>
-    </article>
+  <div class="review-window">
+    <div class="review-track">
+      <article class="slide-review"><div class="slide-stars">★★★★★</div><p>“Bohat comfortable feel hai. Daily walking mein kaafi acha laga.”</p><div class="slide-name">— Verified Customer</div></article>
+      <article class="slide-review"><div class="slide-stars">★★★★★</div><p>“Size bilkul theek aya aur shoes mein easily adjust ho gaya.”</p><div class="slide-name">— Verified Customer</div></article>
+      <article class="slide-review"><div class="slide-stars">★★★★★</div><p>“Long time kharay rehne mein feet zyada comfortable feel hue.”</p><div class="slide-name">— Verified Customer</div></article>
+      <article class="slide-review"><div class="slide-stars">★★★★★</div><p>“Soft cushioning achi hai, daily use ke liye convenient hai.”</p><div class="slide-name">— Verified Customer</div></article>
+    </div>
   </div>
+  <div class="review-dots"><i></i><i></i><i></i></div>
 </section>
+
 
 </main>
 
