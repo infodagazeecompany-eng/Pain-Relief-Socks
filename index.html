@@ -267,7 +267,7 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 
 <script>
 /* Google Sheet URL baad mein yahan add kar sakte hain. */
-const GOOGLE_SHEET_URL = "";
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwTDqSAeIJrvHOt9n4yOIj95sV_Y30hHWP_gO6_BcoroHAf3n4oF1erI5b0lwURG0cs/exec";
 const form = document.getElementById("orderForm");
 const modal = document.getElementById("successModal");
 const closeModal = document.getElementById("closeModal");
@@ -301,6 +301,7 @@ form.addEventListener("submit", async (e) => {
   const subtotal = Number(selectedDeal?.dataset.price || 1100);
   const shipping = 200;
   const total = subtotal + shipping;
+  data.deal = `${data.quantity} ${Number(data.quantity) === 1 ? "Pair" : "Pairs"}`;
   data.price = String(subtotal);
   data.shipping = String(shipping);
   data.total = String(total);
