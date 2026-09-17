@@ -73,6 +73,46 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 .review-arrow{width:42px;height:42px;flex:0 0 42px;border:1px solid #dce6f1;background:#fff;color:#1268d8;border-radius:50%;font-size:29px;line-height:35px;cursor:pointer;box-shadow:0 6px 18px #071d3b0d}.review-arrow:hover{background:#eaf3ff}
 .review-dots{display:flex;justify-content:center;gap:7px;margin-top:18px}.review-dots button{width:7px;height:7px;border:0;padding:0;background:#c5d3e4;border-radius:50%;cursor:pointer}.review-dots button.active{width:22px;border-radius:10px;background:#1268d8}
 @media(max-width:800px){.review-slider-section{padding:48px 15px 58px}.review-slider-heading h2{font-size:27px}.review-carousel{gap:6px}.review-arrow{width:34px;height:34px;flex-basis:34px;font-size:24px;line-height:28px}.slide-review{padding:20px;min-height:155px}.slide-stars{font-size:16px}.slide-review p{font-size:12px}}
+
+.review-slider-section{padding:65px 5vw 72px;background:linear-gradient(180deg,#f6faff 0%,#fff 100%)}
+.review-slider-heading h2{font-size:34px}
+.review-carousel{max-width:980px;gap:14px}
+.review-viewport{border-radius:22px}
+.slide-review{min-height:190px;padding:27px 30px;border-radius:22px;box-shadow:0 16px 42px #071d3b10}
+.avatar{width:44px;height:44px;font-size:14px}
+.review-top b{font-size:13px}
+.review-top small{font-size:9px}
+.slide-stars{font-size:19px;margin:15px 0 9px;color:#f6b500}
+.slide-review p{font-size:14px;line-height:1.7}
+.review-arrow{width:46px;height:46px;flex-basis:46px;font-size:31px;background:#fff}
+@media(max-width:800px){
+ .review-slider-section{padding:52px 12px 62px}
+ .review-slider-heading h2{font-size:28px}
+ .review-carousel{gap:6px}
+ .slide-review{min-height:180px;padding:23px}
+ .slide-review p{font-size:13px}
+ .review-arrow{width:36px;height:36px;flex-basis:36px;font-size:25px}
+}
+
+/* Processing + Thank You flow */
+.processing-screen{position:fixed;inset:0;background:rgba(5,22,45,.78);backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:20px;z-index:9999}
+.processing-screen.show{display:flex}
+.processing-card{width:min(390px,100%);background:#fff;border-radius:24px;padding:38px 28px;text-align:center;box-shadow:0 30px 90px #0005}
+.loader-ring{width:58px;height:58px;margin:0 auto 20px;border:5px solid #e5eef9;border-top-color:#1268d8;border-radius:50%;animation:orderSpin .8s linear infinite}
+.processing-card h2{margin:0;color:#071d3b;font-size:24px}.processing-card p{margin:8px 0 0;color:#78879a;font-size:12px;line-height:1.6}
+@keyframes orderSpin{to{transform:rotate(360deg)}}
+
+.thankyou-screen{display:none;min-height:calc(100vh - 70px);background:linear-gradient(135deg,#f2f8ff,#fff);padding:65px 20px;align-items:center;justify-content:center}
+.thankyou-screen.show{display:flex}
+.thankyou-card{width:min(620px,100%);background:#fff;border:1px solid #e2ebf5;border-radius:26px;padding:38px;box-shadow:0 25px 70px #071d3b12;text-align:center}
+.thank-icon{width:70px;height:70px;border-radius:50%;margin:0 auto 18px;background:#e8f8ef;color:#159052;font-size:40px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.thankyou-card h2{font-size:42px;letter-spacing:-2px;margin:9px 0;color:#071d3b}.thank-main{font-size:16px;font-weight:800;color:#1268d8;margin:0}.thank-sub{font-size:12px;color:#748296;line-height:1.7;max-width:470px;margin:10px auto 25px}
+.next-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:left;margin:25px 0}
+.next-steps>div{padding:15px 12px;border:1px solid #e6edf6;border-radius:14px;background:#f9fbfe}.next-steps span{display:block;font-size:19px;margin-bottom:8px}.next-steps b{display:block;font-size:10px;color:#0b1f3a}.next-steps small{display:block;font-size:9px;color:#7a8798;line-height:1.4;margin-top:4px}
+.order-summary{text-align:left;background:#f6f9fd;border-radius:16px;padding:19px;margin:20px 0}.order-summary h3{margin:0 0 12px;font-size:14px}.order-summary div{display:flex;justify-content:space-between;gap:15px;border-top:1px solid #e3eaf3;padding:10px 0;font-size:10px}.order-summary div:first-of-type{border-top:0}.order-summary span{color:#7b8797}.order-summary b{color:#0b1f3a;text-align:right}
+.back-home{border:0;background:#1268d8;color:#fff;border-radius:11px;padding:13px 23px;font-size:11px;font-weight:900;cursor:pointer}
+@media(max-width:800px){.thankyou-screen{padding:35px 15px}.thankyou-card{padding:27px 18px;border-radius:20px}.thankyou-card h2{font-size:36px}.next-steps{grid-template-columns:1fr}.next-steps>div{display:grid;grid-template-columns:30px 1fr;column-gap:7px}.next-steps span{grid-row:1/3;margin:0}.order-summary div{font-size:9px}}
+
 </style>
 </head>
 <body>
@@ -110,6 +150,7 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 </form>
 </section>
 
+
 <section class="review-slider-section" id="reviews">
   <div class="review-slider-heading">
     <div class="section-tag">CUSTOMER REVIEWS</div>
@@ -120,16 +161,26 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
     <button class="review-arrow prev" type="button" aria-label="Previous review">‹</button>
     <div class="review-viewport">
       <div class="review-track" id="reviewTrack">
-        <article class="slide-review"><div class="review-top"><div class="avatar">A</div><div><b>Customer</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Bohat comfortable feel hai. Daily walking mein acha laga.”</p></article>
-        <article class="slide-review"><div class="review-top"><div class="avatar">S</div><div><b>Customer</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Size theek aya aur shoes mein easily adjust ho gaya.”</p></article>
-        <article class="slide-review"><div class="review-top"><div class="avatar">N</div><div><b>Customer</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Long time kharay rehne mein feet comfortable feel hue.”</p></article>
-        <article class="slide-review"><div class="review-top"><div class="avatar">H</div><div><b>Customer</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Soft cushioning achi hai, daily use ke liye convenient hai.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">A</div><div><b>Ayesha K.</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Bohat comfortable feel hai. Daily walking mein acha laga.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">S</div><div><b>Sara M.</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Size theek aya aur shoes mein easily adjust ho gaya.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">N</div><div><b>Nimra A.</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Soft cushioning achi hai, daily use ke liye convenient hai.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">H</div><div><b>Hina S.</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Long time kharay rehne mein feet comfortable feel hue.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">M</div><div><b>Maria R.</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Walking ke waqt soft support feel hota hai. Overall acha experience.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">F</div><div><b>Fatima Z.</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Lightweight hain aur shoes ke andar bilkul comfortable lagte hain.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">K</div><div><b>Komal R.</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Daily routine ke liye convenient hain aur cushioning achi hai.”</p></article>
+        <article class="slide-review"><div class="review-top"><div class="avatar">Z</div><div><b>Zainab H.</b><small>Verified Customer</small></div></div><div class="slide-stars">★★★★★</div><p>“Product comfortable hai aur delivery experience bhi acha raha.”</p></article>
       </div>
     </div>
     <button class="review-arrow next" type="button" aria-label="Next review">›</button>
   </div>
-  <div class="review-dots" id="reviewDots"><button class="active" type="button"></button><button type="button"></button><button type="button"></button><button type="button"></button></div>
+  <div class="review-dots" id="reviewDots">
+    <button class="active" type="button"></button><button type="button"></button>
+    <button type="button"></button><button type="button"></button>
+    <button type="button"></button><button type="button"></button>
+    <button type="button"></button><button type="button"></button>
+  </div>
 </section>
+
 
 <section class="section intro">
 <div><div class="section-tag">PRODUCT DESCRIPTION & BENEFITS</div><h2>Har step mein<br><span>better comfort.</span></h2>
@@ -150,6 +201,42 @@ footer{text-align:center;padding:48px 20px 90px;border-top:1px solid var(--line)
 </main>
 
 
+
+<div class="processing-screen" id="processingScreen" aria-hidden="true">
+  <div class="processing-card">
+    <div class="loader-ring"></div>
+    <h2>Processing Your Order...</h2>
+    <p>Please wait a moment while we confirm your order.</p>
+  </div>
+</div>
+
+<section class="thankyou-screen" id="thankyouScreen" aria-hidden="true">
+  <div class="thankyou-card">
+    <div class="thank-icon">✓</div>
+    <div class="section-tag">ORDER CONFIRMED</div>
+    <h2>Thank You!</h2>
+    <p class="thank-main">Your Order Has Been Placed Successfully 🎉</p>
+    <p class="thank-sub">We have received your order and our team will contact you soon to confirm your details.</p>
+
+    <div class="next-steps">
+      <div><span>☎️</span><b>1. Confirmation Call</b><small>Our team will contact you shortly.</small></div>
+      <div><span>📦</span><b>2. Processing</b><small>Your order will be prepared for dispatch.</small></div>
+      <div><span>🚚</span><b>3. Delivery</b><small>Receive your order with Cash on Delivery.</small></div>
+    </div>
+
+    <div class="order-summary">
+      <h3>Order Details</h3>
+      <div><span>Product</span><b>Pain Relief Socks Insoles</b></div>
+      <div><span>Size</span><b id="thankSize">—</b></div>
+      <div><span>Quantity</span><b id="thankQty">1</b></div>
+      <div><span>Total</span><b id="thankTotal">Rs. 1,100</b></div>
+      <div><span>Payment</span><b>Cash on Delivery</b></div>
+    </div>
+
+    <button class="back-home" id="backHome" type="button">← Back to Website</button>
+  </div>
+</section>
+
 <footer><div class="footer-brand">STEP<span>CARE</span></div><p>Comfort in every step.</p><div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Refund Policy</a><a href="#">Contact</a></div><small>© 2026 StepCare. All rights reserved.</small></footer>
 
 <div class="sticky-buy"><div><small>Pain Relief Socks Insoles</small><b>Rs. 1,100</b></div><a href="#order">ORDER NOW</a></div>
@@ -164,10 +251,17 @@ const closeModal = document.getElementById("closeModal");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   const button = form.querySelector("button");
+  const processing = document.getElementById("processingScreen");
+  const thankyou = document.getElementById("thankyouScreen");
+  const data = Object.fromEntries(new FormData(form).entries());
+
   button.disabled = true;
   button.textContent = "PROCESSING...";
-  const data = Object.fromEntries(new FormData(form).entries());
+  processing.classList.add("show");
+  processing.setAttribute("aria-hidden", "false");
+
   data.product = "Pain Relief Socks Insoles";
   data.price = data.quantity === "2" ? "2000" : "1100";
   data.order_time = new Date().toISOString();
@@ -175,32 +269,73 @@ form.addEventListener("submit", async (e) => {
   try {
     if (GOOGLE_SHEET_URL) {
       await fetch(GOOGLE_SHEET_URL, {
-        method:"POST", mode:"no-cors",
-        headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
-        body:new URLSearchParams(data).toString()
+        method: "POST",
+        mode: "no-cors",
+        headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
+        body: new URLSearchParams(data).toString()
       });
     }
-    modal.classList.add("show");
-    form.reset();
-  } catch(err) {
+
+    // Keep the processing screen visible for about 2 seconds.
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    processing.classList.remove("show");
+    processing.setAttribute("aria-hidden", "true");
+
+    document.getElementById("thankSize").textContent = data.size || "—";
+    document.getElementById("thankQty").textContent = data.quantity || "1";
+    document.getElementById("thankTotal").textContent =
+      data.quantity === "2" ? "Rs. 2,000" : "Rs. 1,100";
+
+    // Hide the normal site and show the thank-you page.
+    document.querySelector("main").style.display = "none";
+    document.querySelector("footer").style.display = "none";
+    document.querySelector(".header").style.display = "none";
+    document.querySelector(".topbar").style.display = "none";
+    document.querySelector(".sticky-buy")?.style.setProperty("display", "none");
+    thankyou.classList.add("show");
+    thankyou.setAttribute("aria-hidden", "false");
+    window.scrollTo({top: 0, behavior: "instant"});
+  } catch (err) {
+    processing.classList.remove("show");
+    processing.setAttribute("aria-hidden", "true");
     alert("Order submit nahi ho saka. Please dobara try karein.");
   } finally {
     button.disabled = false;
     button.textContent = "PLACE ORDER — CASH ON DELIVERY";
   }
 });
+
+document.getElementById("backHome").addEventListener("click", () => {
+  document.getElementById("thankyouScreen").classList.remove("show");
+  document.getElementById("thankyouScreen").setAttribute("aria-hidden", "true");
+  document.querySelector("main").style.display = "";
+  document.querySelector("footer").style.display = "";
+  document.querySelector(".header").style.display = "";
+  document.querySelector(".topbar").style.display = "";
+  form.reset();
+  window.scrollTo({top: 0, behavior: "smooth"});
+});
+
 closeModal.addEventListener("click",()=>modal.classList.remove("show"));
 modal.addEventListener("click",(e)=>{if(e.target===modal)modal.classList.remove("show")});
 
 (function(){
  const track=document.getElementById('reviewTrack');
  if(!track)return;
- const slides=[...track.children], dots=[...document.querySelectorAll('#reviewDots button')];
- const prev=document.querySelector('.review-arrow.prev'), next=document.querySelector('.review-arrow.next');
+ const slides=[...track.children];
+ const dots=[...document.querySelectorAll('#reviewDots button')];
+ const prev=document.querySelector('.review-arrow.prev');
+ const next=document.querySelector('.review-arrow.next');
  let i=0,timer;
- function show(n){i=(n+slides.length)%slides.length;track.style.transform='translateX(-'+(i*100)+'%)';dots.forEach((d,k)=>d.classList.toggle('active',k===i));}
+ function show(n){
+   i=(n+slides.length)%slides.length;
+   track.style.transform='translateX(-'+(i*100)+'%)';
+   dots.forEach((d,k)=>d.classList.toggle('active',k===i));
+ }
  function start(){clearInterval(timer);timer=setInterval(()=>show(i+1),3200)}
- prev.onclick=()=>{show(i-1);start()}; next.onclick=()=>{show(i+1);start()};
+ prev.onclick=()=>{show(i-1);start()};
+ next.onclick=()=>{show(i+1);start()};
  dots.forEach((d,k)=>d.onclick=()=>{show(k);start()});
  start();
 })();
